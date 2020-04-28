@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using LINQ_Exercises.Models;
 using LINQ_Exercises.Core;
+using System.Linq;
 
 namespace LINQ_Exercises
 {
@@ -13,7 +14,7 @@ namespace LINQ_Exercises
         {
             base.Start();
 
-            //  uzywaj tylko LINQ, nie uzywaj for, foreach, while itd.
+            // uzywaj tylko LINQ, nie uzywaj for, foreach, while itd.
             // zadania rozwiązuj pod komentarzami.
 
             // 1. wygeneruj dla wszystkich uzytkownikow broń {PrimaryWeapon}

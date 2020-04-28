@@ -5,7 +5,6 @@ namespace LINQ_Exercises.Core
 {
     public class GameCore : Core
     {
-
         public override void Start()
         {
             ConsoleEx.Log("Game started!", ConsoleColor.Yellow);
