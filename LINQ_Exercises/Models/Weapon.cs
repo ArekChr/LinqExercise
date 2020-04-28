@@ -13,7 +13,7 @@ namespace LINQ_Exercises.Models
 
         public float Power { get; protected set; }
 
-        public Weapon DrawWeapon()
+        public static Weapon DrawWeapon()
         {
             var rnd = new Random();
             var randomWeaponName = MockWeapons.Data[rnd.Next(0, MockWeapons.Data.Length)];

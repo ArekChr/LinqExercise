@@ -10,5 +10,10 @@ namespace LINQ_Exercises.Models
         {
 
         }
+
+        public void DrawWeapon()
+        {
+            PrimaryWeapon = Weapon.DrawWeapon();
+        }
     }
 }

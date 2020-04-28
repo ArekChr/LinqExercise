@@ -12,16 +12,14 @@ namespace LINQ_Exercises.Models
         public string Name { get; protected set; }
         public int CurrentHealth
         {
-            get { return _currentHealth + _currentHealth * Statiscits.Health / 100; }
+            get { return _currentHealth; }
             set
             {
-                if(value == 0 && _currentHealth != 0)
+                if(value <= 0 && _currentHealth > 0)
                 {
-                    ConsoleEx.Log($"Player {Name} has been killed", ConsoleColor.DarkRed);
-                } else
-                {
-                    _currentHealth = value;
+                    ConsoleEx.Log($"Player {Name} dead...", ConsoleColor.DarkRed);
                 }
+                _currentHealth = value;
             }
         }
         public int MaxHealth { get; protected set; }
@@ -62,12 +60,13 @@ namespace LINQ_Exercises.Models
             {
                 if (target.CurrentHealth > 0)
                 {
-                    target.CurrentHealth -= Statiscits.Strenght * Statiscits.Agility;
                     ConsoleEx.Log($"{Name} has attacked {target.Name}", ConsoleColor.Magenta);
                     ConsoleEx.Log($"{target.Name}'s have {target.CurrentHealth} health.", ConsoleColor.Magenta);
+                    target.CurrentHealth = target.CurrentHealth - Statiscits.Strenght * Statiscits.Agility;
+
                     if (target.CurrentHealth <= 0)
                     {
-                        ConsoleEx.Log($"{Name} killed {target.Name}", ConsoleColor.Magenta);
+                        ConsoleEx.Log($"{Name} killed {target.Name}", ConsoleColor.Red);
                     }
                     Statiscits.InceraseRandomly();
                     Fights++;

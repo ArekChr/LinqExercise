@@ -4,6 +4,7 @@ using System.Net;
 using LINQ_Exercises.Models;
 using Newtonsoft.Json;
 using LINQ_Exercises.Extensions;
+using LINQ_Exercises.Config;
 
 namespace LINQ_Exercises.Initializer
 {
@@ -12,7 +13,7 @@ namespace LINQ_Exercises.Initializer
         public static Game Initialize(this Game game)
         {
             ConsoleEx.Log("Initializing new game...", System.ConsoleColor.Green);
-            var users = GetUsers(10000).ToList();
+            var users = GetUsers(PlayerConfig.FAKE_PLAYERS).ToList();
             game.Players = users.Select(u => new Player(u)).ToList();
             ConsoleEx.Log($"Created {users.Count()} users.", System.ConsoleColor.Green);
             return game;
