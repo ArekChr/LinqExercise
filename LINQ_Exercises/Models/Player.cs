@@ -56,7 +56,7 @@ namespace LINQ_Exercises.Models
 
         public void Attack(Player target)
         {
-            if(ActiveGear.PrimaryWeapon == null)
+            if(ActiveGear.PrimaryWeapon != null)
             {
                 if (target.CurrentHealth > 0)
                 {
