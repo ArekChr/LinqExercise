@@ -48,6 +48,8 @@ namespace LINQ_Exercises
             // 15. zaatakuj 10-cioma uzytkownikami 10 innych uzytkownikow 10 razy
 
             // 16. wyświetl przegranych uzytkownikow jesli tacy są CurrentHealth < 0
+
+            // 17. Przepisz konstruktor na get i set w statystykach.
         }
     }
 }

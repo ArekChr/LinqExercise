@@ -28,7 +28,7 @@ namespace LINQ_Exercises.Models
             return new Statiscits(a, b, c, d);
         }
 
-        public Statiscits(int strenght, int stamina, int intelligence, int agility)
+        public Statiscits(int strenght, int stamina, int health, int agility)
         {
             FreePoints = PlayerConfig.DEFAULT_FREE_POINTS;
             if (strenght < FreePoints) {
@@ -40,7 +40,7 @@ namespace LINQ_Exercises.Models
                 FreePoints = 0;
             }
 
-            if (strenght < FreePoints)
+            if (stamina < FreePoints)
             {
                 Stamina = stamina;
                 FreePoints -= stamina;
@@ -51,10 +51,10 @@ namespace LINQ_Exercises.Models
                 FreePoints = 0;
             }
 
-            if (strenght < FreePoints)
+            if (health < FreePoints)
             {
-                Health = intelligence;
-                FreePoints -= intelligence;
+                Health = health;
+                FreePoints -= health;
             }
             else
             {
@@ -62,7 +62,7 @@ namespace LINQ_Exercises.Models
                 FreePoints = 0;
             }
 
-            if (strenght < FreePoints)
+            if (agility < FreePoints)
             {
                 Agility = agility;
                 FreePoints -= agility;
@@ -104,7 +104,7 @@ namespace LINQ_Exercises.Models
         {
             if (FreePoints > 0)
             {
-                Strenght++;
+                Stamina++;
                 FreePoints--;
             }
             else
@@ -113,11 +113,11 @@ namespace LINQ_Exercises.Models
             }
         }
 
-        public void InceraseIntelligence()
+        public void InceraseHealth()
         {
             if (FreePoints > 0)
             {
-                Strenght++;
+                Health++;
                 FreePoints--;
             }
             else
@@ -130,7 +130,7 @@ namespace LINQ_Exercises.Models
         {
             if (FreePoints > 0)
             {
-                Strenght++;
+                Agility++;
                 FreePoints--;
             }
             else
