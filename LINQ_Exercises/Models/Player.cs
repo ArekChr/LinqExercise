@@ -26,7 +26,7 @@ namespace LINQ_Exercises.Models
         public Inventory Inventory { get; protected set; }
         public Gear ActiveGear { get; protected set; }
         public Statiscits Statiscits { get; protected set; }
-        public IList<Player> Friends { get; protected set; }
+        public List<Player> Friends { get; protected set; }
         public int Fights { get; protected set; }
 
         public Player(string name, Statiscits statistics = null)
@@ -44,10 +44,10 @@ namespace LINQ_Exercises.Models
         protected void Init(string name, Statiscits statistics = null)
         {
             ActiveGear = new Gear();
-            MaxHealth = PlayerConfig.DEFAULT_HEALTH;
             Name = name;
             Inventory = new Inventory();
             Statiscits = statistics ?? Statiscits.GenerateRandom();
+            MaxHealth = PlayerConfig.DEFAULT_HEALTH + (PlayerConfig.DEFAULT_HEALTH * Statiscits.Health / 100);
             CurrentHealth = PlayerConfig.DEFAULT_HEALTH + (PlayerConfig.DEFAULT_HEALTH * Statiscits.Health / 100);
             Friends = new List<Player>();
 
@@ -85,6 +85,11 @@ namespace LINQ_Exercises.Models
                     ConsoleEx.Log($"{Name} has no weapon to attack.", ConsoleColor.Red);
                 }
             }
+        }
+
+        public void AddFriends(IList<Player> newfriends)
+        {
+            Friends.AddRange(newfriends);
         }
     }
 }
