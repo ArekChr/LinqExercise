@@ -24,31 +24,55 @@ namespace LINQ_Exercises.Models
         }
         public int MaxHealth { get; protected set; }
         public Inventory Inventory { get; protected set; }
-        public Gear ActiveGear { get; protected set; }
-        public Statiscits Statiscits { get; protected set; }
+        public Gear ActiveGear
+        { 
+            get
+            {
+                return ActiveGear;
+            }
+            protected set
+            {
+                ActiveGear = value;
+                CurrentStatistics.UpdateStatistic(value, BaseStatiscits);
+            }
+        }
+        public BasicStatiscits BaseStatiscits
+        {
+            get 
+            {
+                return BaseStatiscits;
+            }
+            protected set
+            {
+                BaseStatiscits = value;
+                CurrentStatistics.UpdateStatistic(ActiveGear, value);
+            }
+        }
+        public DynamicStatistic CurrentStatistics { get; protected set; }
         public List<Player> Friends { get; protected set; }
         public int Fights { get; protected set; }
 
-        public Player(string name, Statiscits statistics = null)
+        public Player(string name, BasicStatiscits statistics = null)
         {
             Id = Guid.NewGuid();
             Init(name, statistics);
         }
 
-        public Player(Guid id, string name, Statiscits statistics = null)
+        public Player(Guid id, string name, BasicStatiscits statistics = null)
         {
             Id = id;
             Init(name, statistics);
+           
         }
 
-        protected void Init(string name, Statiscits statistics = null)
+        protected void Init(string name, BasicStatiscits statistics = null)
         {
             ActiveGear = new Gear();
             Name = name;
             Inventory = new Inventory();
-            Statiscits = statistics ?? Statiscits.GenerateRandom();
-            MaxHealth = PlayerConfig.DEFAULT_HEALTH + (PlayerConfig.DEFAULT_HEALTH * Statiscits.Health / 100);
-            CurrentHealth = PlayerConfig.DEFAULT_HEALTH + (PlayerConfig.DEFAULT_HEALTH * Statiscits.Health / 100);
+            BaseStatiscits = statistics ?? BasicStatiscits.GenerateRandom();
+            MaxHealth = PlayerConfig.DEFAULT_HEALTH + (PlayerConfig.DEFAULT_HEALTH * BaseStatiscits.Health / 100);
+            CurrentHealth = PlayerConfig.DEFAULT_HEALTH + (PlayerConfig.DEFAULT_HEALTH * BaseStatiscits.Health / 100);
             Friends = new List<Player>();
 
             ConsoleEx.Log($"Created new player: {Name}", ConsoleColor.Magenta);
@@ -62,13 +86,13 @@ namespace LINQ_Exercises.Models
                 {
                     ConsoleEx.Log($"{Name} has attacked {target.Name}", ConsoleColor.Magenta);
                     ConsoleEx.Log($"{target.Name}'s have {target.CurrentHealth} health.", ConsoleColor.Magenta);
-                    target.CurrentHealth = target.CurrentHealth - Statiscits.Strenght * Statiscits.Agility;
+                    target.CurrentHealth = target.CurrentHealth - BaseStatiscits.Strenght * BaseStatiscits.Agility;
 
                     if (target.CurrentHealth <= 0)
                     {
                         ConsoleEx.Log($"{Name} killed {target.Name}", ConsoleColor.Red);
                     }
-                    Statiscits.InceraseRandomly();
+                    BaseStatiscits.InceraseRandomly();
                     Fights++;
                 }
                 else

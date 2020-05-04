@@ -50,6 +50,30 @@ namespace LINQ_Exercises
             // 16. wyświetl przegranych uzytkownikow jesli tacy są CurrentHealth < 0
 
             // 17. Przepisz konstruktor na get i set w statystykach.
+
+            // 18. Sprawdź czy {You} wystepuje w liscie {Players}. (Contains)
+
+            // 19. Wyświetl średnią ilość żyć wszystkich graczy
+
+            // 20. Wyświetl średnią ilość agility wszystkich graczy
+
+            // 21. Wyświetl gracza który posiada najwiekszą ilosc jednej z statystyk
+
+            // 22. Utwórz i dodaj nowego gracza na początku sekwencji/listy
+
+            // 23. Usuń wszystkich graczy którzy posiadają broń "Amnesia" oraz wyświetl liczbe usuniętych graczy
+
+            // 24. Wyświetl całkowitą liczbe stoczonych walk wszystkich graczy (pojedyncza liczba)
+
+            // 26. Zmodyfikuj model playera o date zgonu
+
+            // 25. Spróbuj zabić jednego uzytkownika
+
+            // 27. Wyświetl wszystkie informacje powyższego uzytkownika, uwzgledniając date zgonu.
+
+            // 28. Usuń połowe graczy z najsłabszym hp {CurrentHealth}
+
+            // 29. Sprawdź czy jakiś uzytkonik ma w znajomych zgona.
         }
     }
 }

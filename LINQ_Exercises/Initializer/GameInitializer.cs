@@ -37,7 +37,7 @@ namespace LINQ_Exercises.Initializer
 
         public static Game WithCurrentPlayer(this Game game)
         {
-            game.You = new Player(CurrentPlayer.Name, new Statiscits(
+            game.You = new Player(CurrentPlayer.Name, new BasicStatiscits(
                 CurrentPlayer.Strenght,
                 CurrentPlayer.Stamina,
                 CurrentPlayer.Health,

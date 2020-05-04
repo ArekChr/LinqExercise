@@ -2,7 +2,7 @@
 using LINQ_Exercises.Mock;
 using LINQ_Exercises.Extensions;
 
-namespace LINQ_Exercises.Models
+namespace LINQ_Exercises.Models.Items
 {
     public class Weapon : Item
     {

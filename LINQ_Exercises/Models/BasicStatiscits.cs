@@ -4,7 +4,7 @@ using LINQ_Exercises.Extensions;
 
 namespace LINQ_Exercises.Models
 {
-    public class Statiscits
+    public class BasicStatiscits
     {
         public int Strenght { get; protected set; }
         public int Stamina { get; protected set; }
@@ -13,22 +13,22 @@ namespace LINQ_Exercises.Models
 
         public int FreePoints { get; protected set; }
 
-        public Statiscits()
+        public BasicStatiscits()
         {
 
         }
 
-        public static Statiscits GenerateRandom()
+        public static BasicStatiscits GenerateRandom()
         {
             var rnd = new Random();
             int a = rnd.Next(0, 30);
             int b = rnd.Next(0, 30);
             int c = rnd.Next(0, 30);
             int d = rnd.Next(0, 30);
-            return new Statiscits(a, b, c, d);
+            return new BasicStatiscits(a, b, c, d);
         }
 
-        public Statiscits(int strenght, int stamina, int health, int agility)
+        public BasicStatiscits(int strenght, int stamina, int health, int agility)
         {
             FreePoints = PlayerConfig.DEFAULT_FREE_POINTS;
             if (strenght < FreePoints) {

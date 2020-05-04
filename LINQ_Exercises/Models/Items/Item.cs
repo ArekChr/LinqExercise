@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LINQ_Exercises.Models
+﻿namespace LINQ_Exercises.Models.Items
 {
     public class Item
     {
@@ -12,6 +10,5 @@ namespace LINQ_Exercises.Models
 
         public string Name { get; protected set; }
         public bool Salable { get; protected set; }
-
     }
 }
