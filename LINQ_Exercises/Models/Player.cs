@@ -24,28 +24,36 @@ namespace LINQ_Exercises.Models
         }
         public int MaxHealth { get; protected set; }
         public Inventory Inventory { get; protected set; }
+        private Gear _activeGear;
         public Gear ActiveGear
         { 
             get
             {
-                return ActiveGear;
+                return _activeGear;
             }
             protected set
             {
-                ActiveGear = value;
-                CurrentStatistics.UpdateStatistic(value, BaseStatiscits);
+                _activeGear = value;
+                if(BaseStatiscits != null && value != null && CurrentStatistics != null)
+                {
+                    CurrentStatistics.UpdateStatistic(value, BaseStatiscits);
+                }
             }
         }
+        private BasicStatiscits _baseStatiscits;
         public BasicStatiscits BaseStatiscits
         {
             get 
             {
-                return BaseStatiscits;
+                return _baseStatiscits;
             }
             protected set
             {
-                BaseStatiscits = value;
-                CurrentStatistics.UpdateStatistic(ActiveGear, value);
+                _baseStatiscits = value;
+                if(ActiveGear != null && value != null && CurrentStatistics != null)
+                {
+                    CurrentStatistics.UpdateStatistic(ActiveGear, value);
+                }
             }
         }
         public DynamicStatistic CurrentStatistics { get; protected set; }
