@@ -17,6 +17,7 @@ namespace LINQ_Exercises.Models
             {
                 if(value <= 0 && _currentHealth > 0)
                 {
+                    DeathDate = DateTime.UtcNow;
                     ConsoleEx.Log($"Player {Name} dead...", ConsoleColor.DarkRed);
                 }
                 _currentHealth = value;
@@ -59,6 +60,7 @@ namespace LINQ_Exercises.Models
         public DynamicStatistic CurrentStatistics { get; protected set; }
         public List<Player> Friends { get; protected set; }
         public int Fights { get; protected set; }
+        public DateTime DeathDate { get; protected set; }
 
         public Player(string name, BasicStatiscits statistics = null)
         {

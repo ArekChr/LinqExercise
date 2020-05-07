@@ -10,7 +10,7 @@ namespace LINQ_Exercises.Extensions
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public static void Log(string message, ConsoleColor color)
+        public static void Log(string message, ConsoleColor color = ConsoleColor.White)
         {
             Console.ForegroundColor = color;
             Console.WriteLine(message);
