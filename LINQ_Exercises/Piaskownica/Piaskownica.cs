@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using LINQ_Exercises.DTOs;
+using LINQ_Exercises.Extensions;
+using LINQ_Exercises.Models;
+using LINQ_Exercises.Piaskownica.Infrastruktura.Serwisy;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace LINQ_Exercises
+namespace LINQ_Exercises.Piaskownica
 {
 
     public class User
@@ -96,9 +101,9 @@ namespace LINQ_Exercises
 
             int kolejnaLiczba52;
 
-            for(int i = 0; i < liczby.Length; i++)
+            for (int i = 0; i < liczby.Length; i++)
             {
-                if(liczby[i] == 52)
+                if (liczby[i] == 52)
                 {
                     kolejnaLiczba52 = liczby[i];
                     break;
@@ -111,7 +116,8 @@ namespace LINQ_Exercises
 
             var nowiAnonimowiUzytkownicy = uzytkownicy.Select(x => new { FirstName = x.name }).ToArray();
 
-            var nowiUzytkownicy = uzytkownicy.Select(x => {
+            var nowiUzytkownicy = uzytkownicy.Select(x =>
+            {
                 var nowyuzytkownik = new NowiUzytkownicy();
                 nowyuzytkownik.FirstName = x.name;
                 return nowyuzytkownik;
@@ -139,6 +145,35 @@ namespace LINQ_Exercises
                 var newUserDto = new UserDto(users[i]);
                 usersDto3.Add(newUserDto);
             }
+
+            var userId = Guid.NewGuid();
+            var _friendService = new FriendsService();
+
+            //
+
+            var friends = _friendService.GetFriends(userId);
+
+            var _weponService = new WeponService();
+
+            _weponService.GenerateWeaponForAllPlayers();
+            _weponService.GenerateWeaponForPlayers(friends);
+
+            //
+
+            var _playerService = new PlayerService();
+            _playerService.PrepareAttack(30);
+            _playerService.LogPlayers(10);
+            _playerService.AddRandomFriends(10, Game.You);
+
+            var playerStatistics = _playerService.MapPlayersToPlayerStatistic();
+            int index = 1;
+
+            var jacysGracze = new List<Player>() { new Player("Arek"), new Player("Pati") };
+            _playerService.PlayersWithTheMostLivesAndFight(jacysGracze);
+
+            _playerService.PlayersWithTheMostLivesAndFight(Game.Players);
         }
+
+      
     }
 }
